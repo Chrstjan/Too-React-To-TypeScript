@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
+import { Recipe } from "../components/Recipe/Recipe";
+import { Wrapper } from "../components/Wrapper/Wrapper";
 
-interface Product {
+interface ProductData {
+  limit: number;
+  recipes: Product[];
+  skip: number;
+  total: number;
+}
+
+export interface Product {
   id: number;
   name: string;
   ingredients: string[];
@@ -15,11 +25,25 @@ interface Product {
 }
 
 export const LandingPage = () => {
-  const { data, isLoading, error } = useFetch<Product>(
-    "https://dummyjson.com/recipes"
+  const [featuredRecipes, setFeaturedProducts] = useState<Product[]>([]);
+  const { data, isLoading, error } = useFetch<ProductData>(
+    "https://dummyjson.com/recipes?skip=0"
   );
 
-  console.log(data);
+  useEffect(() => {
+    if (data) {
+      const featuredArray = [];
+      featuredArray.push(
+        data.recipes[Math.floor(Math.random() * data.recipes.length)],
+        data.recipes[Math.floor(Math.random() * data.recipes.length)],
+        data.recipes[Math.floor(Math.random() * data.recipes.length)],
+        data.recipes[Math.floor(Math.random() * data.recipes.length)],
+        data.recipes[Math.floor(Math.random() * data.recipes.length)],
+        data.recipes[Math.floor(Math.random() * data.recipes.length)]
+      );
+      setFeaturedProducts(featuredArray);
+    }
+  }, [data]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -29,5 +53,12 @@ export const LandingPage = () => {
     return <h2>Error in fetch</h2>;
   }
 
-  return <div>LandingPage</div>;
+  return (
+    <>
+      <h2>Featured Products</h2>
+      <Wrapper type="productGrid">
+        {featuredRecipes ? <Recipe data={featuredRecipes} /> : null}
+      </Wrapper>
+    </>
+  );
 };

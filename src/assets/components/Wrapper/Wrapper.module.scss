@@ -1,0 +1,13 @@
+@use "../../styles/placeholders";
+
+.wrapperStyling {
+  .wrapperTitle {
+    @extend %headerFont;
+    color: #1f1f1f;
+  }
+
+  &.productGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
