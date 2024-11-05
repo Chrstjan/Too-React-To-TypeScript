@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap");
+@use "./variables" as *;
+
+%margin-reset {
+  margin: 0;
+}
+
+%padding-reset {
+  padding: 0;
+}
+
+%headerFont {
+  font-family: "Playwrite AU SA";
+  text-align: center;
+  color: $header-text-color;
+}
