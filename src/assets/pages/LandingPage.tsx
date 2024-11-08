@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { Recipe } from "../components/Recipe/Recipe";
 import { Wrapper } from "../components/Wrapper/Wrapper";
+import { CategoryMenu } from "../components/CategoryMenu/CategoryMenu";
 
 interface ProductData {
   limit: number;
@@ -15,6 +16,7 @@ export interface Product {
   name: string;
   ingredients: string[];
   instructions: string[];
+  mealType: string[];
   prepTimeMinutes: number;
   cookTimeMinutes: number;
   servings: number;
@@ -58,6 +60,7 @@ export const LandingPage = () => {
   return (
     <>
       <h2>Featured Products</h2>
+      {data ? <CategoryMenu data={data[0].recipes} /> : null}
       <Wrapper type="productGrid">
         {featuredRecipes && !isLoading && !error ? (
           <Recipe data={featuredRecipes} />
