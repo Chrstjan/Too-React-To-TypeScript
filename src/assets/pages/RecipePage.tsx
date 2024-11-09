@@ -23,7 +23,9 @@ export const RecipePage = () => {
 
   return (
     <Wrapper>
-      {data && !isLoading && !error ? <Recipe data={data} /> : null}
+      {data && !isLoading && !error ? (
+        <Recipe data={data} infoHeader={true} />
+      ) : null}
     </Wrapper>
   );
 };

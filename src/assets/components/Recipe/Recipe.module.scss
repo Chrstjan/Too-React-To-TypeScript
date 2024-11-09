@@ -10,6 +10,11 @@
       width: 100%;
     }
 
+    .infoHeaderStyling {
+      @include m.flexBox(row, center, center, 0.5rem);
+      padding: 0rem 1rem;
+    }
+
     h3 {
       text-align: center;
     }
