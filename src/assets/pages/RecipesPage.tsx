@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { Product } from "./LandingPage";
+import { Wrapper } from "../components/Wrapper/Wrapper";
+import { Recipe } from "../components/Recipe/Recipe";
+import { CategoryMenu } from "../components/CategoryMenu/CategoryMenu";
 
 export const RecipesPage = () => {
   const { mealType } = useParams();
@@ -19,5 +22,14 @@ export const RecipesPage = () => {
     return <h2>Error in fetch</h2>;
   }
 
-  return <div>RecipesPage</div>;
+  return (
+    <>
+      <CategoryMenu data={data[0].recipes} />
+      <Wrapper type="productGrid">
+        {data && !isLoading && !error ? (
+          <Recipe data={data[0].recipes} />
+        ) : null}
+      </Wrapper>
+    </>
+  );
 };

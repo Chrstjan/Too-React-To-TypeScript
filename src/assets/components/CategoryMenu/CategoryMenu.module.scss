@@ -1,0 +1,17 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as *;
+@use "../../styles/placeholders";
+
+.navStyling {
+  @extend %padding-reset;
+  padding: 0rem 1rem;
+  @include m.flexBox(row, flex-start, center, 1rem);
+  overflow-x: auto;
+
+  a {
+    text-decoration: none;
+    min-width: 70px;
+    text-align: center;
+    @extend %primaryButton;
+  }
+}

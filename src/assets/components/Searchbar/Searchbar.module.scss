@@ -1,0 +1,14 @@
+.searchbarStyling {
+  position: relative;
+  border-radius: 8px;
+  border: 0;
+  padding: 0.6rem 2rem;
+}
+
+svg:last-of-type {
+  height: 7vh;
+  width: 7vw;
+  position: absolute;
+  top: 38%;
+  right: 20%;
+}

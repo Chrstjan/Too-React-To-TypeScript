@@ -14,8 +14,11 @@ interface ProductData {
 export interface Product {
   id: number;
   name: string;
+  image: string;
   ingredients: string[];
   instructions: string[];
+  rating: number;
+  reviewCount: number;
   mealType: string[];
   prepTimeMinutes: number;
   cookTimeMinutes: number;
@@ -59,8 +62,8 @@ export const LandingPage = () => {
 
   return (
     <>
-      <h2>Featured Products</h2>
       {data ? <CategoryMenu data={data[0].recipes} /> : null}
+      <h2 style={{ textAlign: "center" }}>Featured Products</h2>
       <Wrapper type="productGrid">
         {featuredRecipes && !isLoading && !error ? (
           <Recipe data={featuredRecipes} />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "../../pages/LandingPage";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import s from "./CategoryMenu.module.scss";
 
 enum MealType {
   Dinner = "Dinner",
@@ -34,16 +35,15 @@ export const CategoryMenu = ({ data }: CategoryProps) => {
     const mealCategories = getMealCategories(data);
     const mealCategoriesArray = Array.from(mealCategories);
     setMealsCategory(mealCategoriesArray);
-    console.log("Meals Category: ", mealsCategory);
   }, [data]);
 
   return (
-    <ul>
+    <ul className={s.navStyling}>
       {mealsCategory.map((item) => {
         return (
-          <Link key={item} to={`/recipes/${item}`}>
+          <NavLink key={item} to={`/recipes/${item}`}>
             {item}
-          </Link>
+          </NavLink>
         );
       })}
     </ul>

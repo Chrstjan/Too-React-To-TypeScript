@@ -1,0 +1,28 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as *;
+
+.recipeStyling {
+  @include m.flexBox(column, center, center, 0rem);
+  border: 2px solid #000;
+  border-radius: 5px;
+  header {
+    img {
+      width: 100%;
+    }
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  .infoStyling {
+    @include m.flexBox(row, center, center);
+  }
+  figcaption {
+    padding: 0rem 1rem 1rem 1rem;
+
+    .tagsStyling {
+      @include m.flexBox(column, center, center);
+    }
+  }
+}

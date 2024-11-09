@@ -14,3 +14,10 @@
   text-align: center;
   color: $header-text-color;
 }
+
+%primaryButton {
+  color: $header-text-color;
+  background: $button-background;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+}

@@ -15,10 +15,29 @@ export const Recipe = ({ data }: RecipeProps) => {
 
   return (
     <>
-      {data.map((item) => {
+      {data.map((item, index) => {
         return (
-          <figure className={s.recipeStyling} key={item.id}>
-            <h2 onClick={() => handleRecipeClick(item)}>{item.name}</h2>
+          <figure className={s.recipeStyling} key={index}>
+            <header onClick={() => handleRecipeClick(item)}>
+              <img src={item.image} />
+              <h3>{item.name}</h3>
+            </header>
+            <span className={s.infoStyling}>
+              <p>{item.rating} Stars</p>
+              <p>{item.reviewCount} reviews</p>
+            </span>
+            <figcaption>
+              <p>Servings: {item.servings}</p>
+              <p>Difficulty: {item.difficulty}</p>
+              <div className={s.tagsStyling}>
+                <p>Tags:</p>
+                <span>
+                  {item.tags.map((tag) => (
+                    <p key={tag}>{tag}</p>
+                  ))}
+                </span>
+              </div>
+            </figcaption>
           </figure>
         );
       })}

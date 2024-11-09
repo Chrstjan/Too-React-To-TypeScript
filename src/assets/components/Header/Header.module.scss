@@ -1,0 +1,28 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as *;
+@use "../../styles/placeholders";
+@use "../../styles/animations";
+
+.headerStyling {
+  @include m.flexBox(column, center, center, 1rem);
+  padding: 1rem;
+  text-align: center;
+  background: $header-background;
+
+  svg:first-of-type {
+    display: block;
+    width: 12rem;
+    height: 10vh;
+    fill: $header-text-color;
+    animation: iconSpin 7s infinite linear;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h1 {
+    margin-top: 0rem;
+    @extend %headerFont;
+  }
+}
